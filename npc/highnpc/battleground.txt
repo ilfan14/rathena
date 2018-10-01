@@ -1,0 +1,26 @@
+prontera,183,214,4	script	Battleground	871,{
+mes "^ff0000[Battleground]^000000";
+mes "Do you want to enter the Battleground Room?";
+next;
+menu "Ok!",mau,"Sorry, thank you",tdk;
+tdk:
+mes "^ff0000[Battleground]^000000";
+mes "Ok!, You are welcome"; 
+close;
+
+mau:
+mes "^ff0000[Battleground]^000000";
+set .@q1,rand(100000,999990);
+mes "Enter the code! :";
+mes "^0000FF"+.@q1+"^000000";
+input .@q2;
+if(.@q1!=.@q2) close;
+announce ""+ strcharinfo(0) +" Has joined in Battleground Room",0,0x0000FF;
+warp "pvp_y_room",52,18;
+end;
+
+
+OnInit:
+waitingroom "Battleground",0,0;
+
+}
